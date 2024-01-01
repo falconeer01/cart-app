@@ -1,0 +1,27 @@
+  <div class="container">
+    <div class="card-group">
+      <div class="card" *ngFor="let product of products">
+        <div class="product-image">
+          <img src="{{ product.img }}">
+        </div>
+        <div class="product-info">
+          <div class="name">{{ product.name }}</div>
+          <div class="price">{{ product.price | currency: "USD":"$":"1.2-2" }}</div>
+        </div>
+        <div class="buttons">
+          <button (click)="increase(product.id)">Increase</button>
+          <div class="count">{{ product.count }}</div>
+          <button (click)="decrease(product.id)">Decrease</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart">
+      <h1>Shopping Cart</h1>
+      <div class="product-row" *ngFor="let product of products">
+        <span class="name">{{ product.name }}</span>
+        <span class="count">{{ product.count }}</span>
+        <span class="total-price">{{ getTotalPrice(product.id) | currency: "USD":"$":"1.2-2" }}</span>
+      </div>
+    </div>
+  </div>
